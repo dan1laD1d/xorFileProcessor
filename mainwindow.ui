@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>File XOR Processor</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QGroupBox" name="settingsGroup">
+      <property name="title">
+       <string>Настройки</string>
+      </property>
+      <layout class="QGridLayout" name="gridLayout">
+       <item row="0" column="0">
+        <widget class="QLabel" name="fileMaskLabel">
+         <property name="text">
+          <string>Маска файлов:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QLineEdit" name="fileMaskEdit"/>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="xorValueLabel">
+         <property name="text">
+          <string>XOR значение (hex):</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QLineEdit" name="xorValueEdit"/>
+       </item>
+       <item row="2" column="0">
+        <widget class="QLabel" name="inputPathLabel">
+         <property name="text">
+          <string>Входная директория:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="1">
+        <layout class="QHBoxLayout" name="inputPathLayout">
+         <item>
+          <widget class="QLineEdit" name="inputPathEdit"/>
+         </item>
+         <item>
+          <widget class="QPushButton" name="browseInputButton">
+           <property name="text">
+            <string>Обзор</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item row="3" column="0">
+        <widget class="QLabel" name="outputPathLabel">
+         <property name="text">
+          <string>Выходная директория:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="1">
+        <layout class="QHBoxLayout" name="outputPathLayout">
+         <item>
+          <widget class="QLineEdit" name="outputPathEdit"/>
+         </item>
+         <item>
+          <widget class="QPushButton" name="browseOutputButton">
+           <property name="text">
+            <string>Обзор</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item row="4" column="0">
+        <widget class="QCheckBox" name="deleteInputCheckBox">
+         <property name="text">
+          <string>Удалять входные файлы</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="1">
+        <widget class="QCheckBox" name="overwriteCheckBox">
+         <property name="text">
+          <string>Перезаписывать существующие файлы</string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="0">
+        <widget class="QCheckBox" name="useTimerCheckBox">
+         <property name="text">
+          <string>Работа по таймеру</string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="1">
+        <layout class="QHBoxLayout" name="timerLayout">
+         <item>
+          <widget class="QLabel" name="pollIntervalLabel">
+           <property name="text">
+            <string>Интервал (мс):</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QSpinBox" name="pollIntervalSpinBox">
+           <property name="minimum">
+            <number>100</number>
+           </property>
+           <property name="maximum">
+            <number>60000</number>
+           </property>
+           <property name="value">
+            <number>1000</number>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="buttonLayout">
+      <item>
+       <widget class="QPushButton" name="startButton">
+        <property name="text">
+         <string>Запустить</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pauseResumeButton">
+        <property name="text">
+         <string>Пауза</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="stopButton">
+        <property name="text">
+         <string>Остановить</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <widget class="QLabel" name="statusLabel">
+      <property name="text">
+       <string>Готов к работе</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QTableWidget" name="progressTable"/>
+    </item>
+    <item>
+     <widget class="QTextEdit" name="logTextEdit">
+      <property name="readOnly">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
