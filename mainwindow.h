@@ -23,7 +23,8 @@ protected:
 private slots:
     void on_startButton_clicked();
     void on_stopButton_clicked();
-    void on_pauseResumeButton_clicked();
+    void on_pauseButton_clicked();
+    void on_resumeButton_clicked();
     void on_browseInputPath_clicked();
     void on_browseOutputPath_clicked();
     void onFileProcessingStarted(const QString &fileName);

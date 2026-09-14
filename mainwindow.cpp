@@ -7,6 +7,7 @@
 #include <QStandardPaths>
 #include <QDateTime>
 #include <QRegularExpression>
+#include <QDebug>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -41,12 +42,15 @@ MainWindow::MainWindow(QWidget *parent)
     ui->progressTable->setColumnWidth(1, 100);
     ui->progressTable->setColumnWidth(2, 150);
 
+    ui->resumeButton->setEnabled(false);
+
     // Подключаем сигналы
     connect(ui->startButton, &QPushButton::clicked, this, &MainWindow::on_startButton_clicked);
     connect(ui->stopButton, &QPushButton::clicked, this, &MainWindow::on_stopButton_clicked);
-    connect(ui->pauseResumeButton, &QPushButton::clicked, this, &MainWindow::on_pauseResumeButton_clicked);
+    connect(ui->pauseResumeButton, &QPushButton::clicked, this, &MainWindow::on_pauseButton_clicked);
     connect(ui->browseInputButton, &QPushButton::clicked, this, &MainWindow::on_browseInputPath_clicked);
     connect(ui->browseOutputButton, &QPushButton::clicked, this, &MainWindow::on_browseOutputPath_clicked);
+    connect(ui->resumeButton, &QPushButton::clicked, this, &MainWindow::on_resumeButton_clicked);
 
     loadSettings();
     updateUIState();
@@ -167,16 +171,23 @@ void MainWindow::on_stopButton_clicked()
     }
 }
 
-void MainWindow::on_pauseResumeButton_clicked()
+void MainWindow::on_pauseButton_clicked()
 {
     if (m_processor && m_processor->isRunning()) {
-        if (m_processor->isPaused()) {
-            m_processor->resume();
-            ui->pauseResumeButton->setText("Пауза");
-        } else {
-            m_processor->pause();
-            ui->pauseResumeButton->setText("Продолжить");
-        }
+        m_processor->pause();
+        ui->pauseResumeButton->setEnabled(false);
+        ui->resumeButton->setEnabled(true);
+       // flag = true;
+    }
+}
+
+void MainWindow::on_resumeButton_clicked()
+{
+    if (m_processor && m_processor->isRunning()) {
+        m_processor->resume();
+        ui->resumeButton->setEnabled(false);
+        ui->pauseResumeButton->setEnabled(true);
+        //flag = true;
     }
 }
 

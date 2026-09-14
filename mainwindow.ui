@@ -148,6 +148,13 @@
        </widget>
       </item>
       <item>
+       <widget class="QPushButton" name="resumeButton">
+        <property name="text">
+         <string>Продолжить</string>
+        </property>
+       </widget>
+      </item>
+      <item>
        <widget class="QPushButton" name="stopButton">
         <property name="text">
          <string>Остановить</string>
